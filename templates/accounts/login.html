@@ -1,0 +1,177 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+
+  <!-- ** Basic Page Needs ** -->
+  <meta charset="utf-8">
+  <title>Fawaz Building Materials</title>
+
+  <!-- ** Mobile Specific Metas ** -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Medical HTML Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Medical HTML Template v1.0">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/slick/slick-theme.css' %}">
+  <!-- FancyBox -->
+  <link rel="stylesheet" href="{% static 'plugins/fancybox/jquery.fancybox.min.css' %}">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
+  <!-- animate.css -->
+  <link rel="stylesheet" href="{% static 'plugins/animation/animate.min.css' %}">
+  <!-- jquery-ui -->
+  <link rel="stylesheet" href="{% static 'plugins/jquery-ui/jquery-ui.css' %}">
+  <!-- timePicker -->
+  <link rel="stylesheet" href="{% static 'plugins/timePicker/timePicker.css' %}">
+  
+  <!-- Stylesheets -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+</head>
+
+
+<body>
+  <div class="page-wrapper">
+
+  
+
+
+
+
+<!--Main Header-->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarLinks">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item @@team">
+          <a class="nav-link" href="{% url 'home' %}"><h4>Fawaz Inventory</h4></a>
+        </li>
+        
+        <li class="nav-item @@team" style="margin-left: 700px;">
+          <a class="nav-link" href="{% url 'home' %}">Back</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--End Main Header -->
+
+<!--Page Title-->
+<section class="page-title text-center" style="background-image: url('{% static 'images/slider/3.jpg' %}');"">
+    <div class="container">
+        <div class="title-text">
+            <h1>Sign In</h1>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+
+<section class="section contact">
+  <!-- container start -->
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-6 offset-md-3">
+        <div class="contact-form">
+          <!-- contact form start -->
+           <div style="text-align: center; margin-top: -50px;">
+            <h3 style="color: black;">Sign In</h3>
+            <p style="color: black;">Kindly enter your correct username and password</p>
+           </div>
+          <form action="" class="row" method="post">
+            {% csrf_token %}
+            
+            <div class="col-lg-12">
+              <input type="text" name="username" class="form-control main" placeholder="username" required>
+            </div>
+
+            <div class="col-lg-12">
+              <input type="password" name="password" class="form-control main" placeholder="password" required>
+            </div>
+
+
+            <div class="col-md-12 text-right ">
+              <button class="btn btn-style-one w-100" type="submit">Login</button>
+            </div>
+
+            
+            {% if messages %}
+               
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" style="margin-left: 150px; margin-top: 5px;" role="alert" >
+                <strong>{{ message }}</strong> 
+                
+            </div>
+                
+            {% endfor %}
+        
+        {% endif %}
+        </div>
+  
+          </form>
+
+
+          <!-- contact form end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+</section>
+<!--====  End of Contact Form  ====-->
+
+
+
+
+
+<!-- jquery -->
+<script src="{% static 'plugins/jquery.min.js' %}"></script>
+<!-- bootstrap -->
+<script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+<!-- Slick Slider -->
+<script src="{% static 'plugins/slick/slick.min.js' %}"></script>
+<script src="{% static 'plugins/slick/slick-animation.min.js' %}"></script>
+<!-- FancyBox -->
+<script src="{% static 'plugins/fancybox/jquery.fancybox.min.js' %}" defer></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+<script src="{% static 'plugins/google-map/gmap.js' %}" defer></script>
+
+<!-- jquery-ui -->
+<script src="{% static 'plugins/jquery-ui/jquery-ui.js' %}" defer></script>
+<!-- timePicker -->
+<script src="{% static 'plugins/timePicker/timePicker.js' %}" defer></script>
+
+<!-- script js -->
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+    setTimeout(function() {
+        const alert = document.querySelector('.alert');
+        if (alert) {
+            alert.classList.remove('show');
+            alert.classList.add('fade');
+            setTimeout(function() {
+                alert.remove();
+            }, 150); // Adjust this timing as needed
+        }
+    }, 2000); // Time in milliseconds before the alert disappears (e.g., 3000ms = 3 seconds)
+</script>
+</body>
+
+</html>
