@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{% static 'plugins1/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
     <!-- Custom Stylesheet -->
     <link href="{% static 'css1/style.css' %}" rel="stylesheet">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+
 
 </head>
 
@@ -57,7 +60,6 @@
         ***********************************-->
         <div class="header">    
             <div class="header-content clearfix">
-                
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -77,7 +79,7 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
- 
+                                       
                                         <hr class="my-2">
                                         
                                         <li><a href="{% url 'user_logout'%}"><i class="icon-key"></i> <span>Logout</span></a></li>
@@ -87,6 +89,8 @@
                         </li>
                     </ul>
                 </div>
+                <h1 style="padding-top: 20px; letter-spacing: 30px; font-weight: 800; margin-left: 20px;">Fawaz Building Materials</h1>
+
             </div>
         </div>
         <!--**********************************
@@ -175,6 +179,16 @@
                             <li><a href="{% url 'report' %}">Sales Report</a></li>
                         </ul>
                     </li>
+
+
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Users</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url 'report' %}">Register Users</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -210,10 +224,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Products Sold</h3>
+                                <h3 class="card-title text-white">Total Products</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">4565</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                    <h2 class="text-white ">{{products}}</h2>
+                                    <p class="text-white">{{ today|date:"d F Y" }}</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
                             </div>
@@ -222,10 +236,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-2">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Net Profit</h3>
+                                <h3 class="card-title text-white">Our Customers</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">$ 8541</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                    <h2 class="text-white">{{customers}}</h2>
+                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                             </div>
@@ -234,10 +248,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-3">
                             <div class="card-body">
-                                <h3 class="card-title text-white">New Customers</h3>
+                                <h3 class="card-title text-white">Products Sold</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">4565</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                    <h2 class="text-white">{{sales}}</h2>
+                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                             </div>
@@ -246,10 +260,10 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-4">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Customer Satisfaction</h3>
+                                <h3 class="card-title text-white">Our Suppliers</h3>
                                 <div class="d-inline-block">
-                                    <h2 class="text-white">99%</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
+                                    <h2 class="text-white">{{suppliers}}</h2>
+                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
                                 </div>
                                 <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
                             </div>
@@ -266,13 +280,52 @@
                                         
                                        
                                     </div>
-                                    <div class="chart-wrapper">
-                                        <canvas id="chart_widget_2"></canvas>
-                                    </div>
+                                    
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             
-                                           
+                                            
+                                            <canvas id="myChart" width="300" height="100"></canvas>
+                                        
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    fetch('/chart-data/')
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            const ctx = document.getElementById('myChart').getContext('2d');
+                                            
+                                                            // Generate random colors for each bar
+                                                            const colors = data.labels.map(() => {
+                                                                const randomColor = () => 'rgba(' + Math.floor(Math.random() * 256) + ', ' +
+                                                                    Math.floor(Math.random() * 256) + ', ' +
+                                                                    Math.floor(Math.random() * 256) + ', 0.6)';
+                                                                return randomColor();
+                                                            });
+                                            
+                                                            new Chart(ctx, {
+                                                                type: data.chart_type,
+                                                                data: {
+                                                                    labels: data.labels,
+                                                                    datasets: [{
+                                                                        label: data.label,
+                                                                        data: data.values,
+                                                                        backgroundColor: colors,  // Set the background color to the generated array
+                                                                        borderColor: 'rgba(0, 0, 0, 1)', // Set border color for all bars
+                                                                        borderWidth: 1
+                                                                    }]
+                                                                },
+                                                                options: {
+                                                                    scales: {
+                                                                        y: {
+                                                                            beginAtZero: true
+                                                                        }
+                                                                    }
+                                                                }
+                                                            });
+                                                        });
+                                                });
+                                            </script>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -321,6 +374,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{% static 'plugins1/common/common.min.js' %}"></script>
     <script src="{% static 'js1/custom.min.js' %}"></script>
     <script src="{% static 'js1/settings.js' %}"></script>

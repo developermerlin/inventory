@@ -10,13 +10,27 @@ import uuid
 from django.db.models import Sum # type: ignore
 from django.utils.dateparse import parse_date # type: ignore
 from datetime import datetime, timedelta
-# Create your views here.
+import json
+from django.utils import timezone
 
 def home(request):
     return render(request, 'home.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    today = timezone.now()
+    products = Product.objects.all().count()
+    customers = Customer.objects.all().count()
+    sales = FinalCart.objects.all().count()
+    suppliers = Supplier.objects.all().count()
+
+    context = {
+        'today': today,
+        'products':products,
+        'customers':customers,
+        'sales':sales,
+        'suppliers':suppliers,
+    }
+    return render(request, 'dashboard.html',context)
 
 
 # Add Category
@@ -542,3 +556,32 @@ def total_sales_report(request):
         'total_sales': total_sales,
     }
     return render(request, 'total_sales_report.html', context)
+
+
+
+
+
+
+
+
+
+
+from django.http import JsonResponse # type: ignore
+
+def chart_data(request):
+    # Query all products from the Product model
+    products = Product.objects.all()
+    
+    # Extract product names and their stock quantities
+    labels = [product.product_name for product in products]
+    values = [product.in_stock for product in products]
+
+    # Prepare data for JSON response
+    data = {
+        'chart_type': 'bar',  # Using 'bar' type for the histogram
+        'labels': labels,
+        'values': values,
+        'label': 'Product Quantity'
+    }
+    
+    return JsonResponse(data)
