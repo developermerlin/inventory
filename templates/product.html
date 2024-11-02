@@ -99,7 +99,7 @@
 
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
-                <ul class="metismenu" id="menu">
+                <ul class="metismenu" id="menu" style="font-size: 18px;">
                     <li class="nav-label">Dashboard</li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
@@ -149,7 +149,7 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Purchase</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
                         </ul>
                     </li>
 
@@ -158,16 +158,16 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Sales</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'add_to_temp_cart' %}">Sales Order</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Inventory</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Cart History</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'final_cart' %}">Cart History</a></li>
                         </ul>
                     </li>
 
@@ -241,37 +241,37 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Img</th>
-                                                <th>Product</th>
-                                                <th>Category</th>
-                                                <th>Supplier</th>
-                                                <th>In Stock</th>
-                                                <th>Buying Price</th>
-                                                <th>Selling Price</th>
-                                                <th>Date Added</th>
-                                                <th>Action</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">No</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Img</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Product</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Category</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Supplier</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">In Stock</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Buying Price</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Selling Price</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Date Added</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Action</th>
                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for product in products %}
                                             <tr>
-                                                <td>{{forloop.counter}}</td>
-                                                <td>
+                                                <td style="font-size: 16px; color:black; text-align:center">{{forloop.counter}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">
                                                     {% if product.profile %}
                                                     <img src="{{ product.profile.url }}" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
                                                     {% else %}
                                                         No Image
                                                     {% endif %} 
                                                 </td>
-                                                <td>{{product.product_name}}</td>
-                                                <td>{{product.product_category}}</td>
-                                                <td>{{product.product_supplier}}</td>
-                                                <td>{{product.in_stock}}</td>
-                                                <td>{{product.buying_price}}</td>
-                                                <td>{{product.selling_price}}</td>
-                                                <td>{{ product.added_date }}</td> 
+                                                <td style="font-size: 16px; color:black; text-align:center">{{product.product_name}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">{{product.product_category}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">{{product.product_supplier}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">{{product.in_stock}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">Nle{{product.buying_price}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">Nle{{product.selling_price}}</td>
+                                                <td style="font-size: 16px; color:black; text-align:center">{{ product.added_date|date:"F j, Y" }}</td> 
                                                 <td style="text-align: center;">
                                                     <a href="{% url 'edit_product' product.id %}" >
                                                         <i class="fas fa-pen" style="color: rgb(5, 94, 43); margin-right: 5px;"></i>
@@ -291,16 +291,16 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Img</th>
-                                                <th>Product</th>
-                                                <th>Category</th>
-                                                <th>Supplier</th>
-                                                <th>In Stock</th>
-                                                <th>Buying Price</th>
-                                                <th>Selling Price</th>
-                                                <th>Date Added</th>
-                                                <th>Action</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">No</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Img</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Product</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Category</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Supplier</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">In Stock</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Buying Price</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Selling Price</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Date Added</th>
+                                                <th style="font-size: 16px; color:black; text-align: center;">Action</th>
                                               
                                             </tr>
                                         </tfoot>

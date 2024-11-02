@@ -95,7 +95,7 @@
 
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
-                <ul class="metismenu" id="menu">
+                <ul class="metismenu" id="menu" style="font-size: 18px;">
                     <li class="nav-label">Dashboard</li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
@@ -145,7 +145,7 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Purchase</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
                         </ul>
                     </li>
 
@@ -154,16 +154,16 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Sales</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'add_to_temp_cart' %}">Sales Order</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Inventory</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Cart History</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'final_cart' %}">Cart History</a></li>
                         </ul>
                     </li>
 

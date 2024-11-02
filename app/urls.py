@@ -23,5 +23,23 @@ urlpatterns = [
     path('supplier/', views.supplier, name='supplier'),
     path('edit_supplier/<int:supplier_id>/', views.edit_supplier, name='edit_supplier'),
     path('delete_supplier/<int:supplier_id>/', views.delete_supplier, name='delete_supplier'),
+
+    path('purchase/', views.purchase, name='purchase'),
+    path('edit_purchase/<int:purchase_id>/', views.edit_purchase, name='edit_purchase'),
+    path('delete_purchase/<int:purchase_id>/', views.delete_purchase, name='delete_purchase'),
+    # path('view_product/<int:product_id>/', views.view_product, name='view_product'),
     
+    # path('add_to_cart/', views.add_to_cart, name='add_to_cart'),
+    # path('edit_product/<int:product_id>/', views.edit_product, name='edit_product'),
+    # path('delete_product/<int:product_id>/', views.delete_product, name='delete_product'),
+    # path('view_product/<int:product_id>/', views.view_product, name='view_product'),
+    path("add_to_temp_cart/", views.add_to_temp_cart, name="add_to_temp_cart"),
+    path("transfer_to_final_cart/", views.transfer_to_final_cart, name="transfer_to_final_cart"),
+
+    path("final_cart/", views.final_cart, name="final_cart"),
+    # path('receipt/<uuid:session_id>/', views.receipt_detail, name='receipt_detail'),  # New URL pattern
+    path('receipt_detail/<uuid:session_id>/',views.receipt_detail, name='receipt_detail'),
+
+
+
 ]

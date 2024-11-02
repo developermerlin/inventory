@@ -99,7 +99,7 @@
 
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
-                <ul class="metismenu" id="menu">
+                <ul class="metismenu" id="menu" style="font-size: 18px;">
                     <li class="nav-label">Dashboard</li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
@@ -149,7 +149,7 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Purchase</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
                         </ul>
                     </li>
 
@@ -158,16 +158,16 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Sales</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'add_to_temp_cart' %}">Sales Order</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Inventory</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Cart History</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-datatable.html">Data Table</a></li>
+                            <li><a href="{% url 'final_cart' %}">Cart History</a></li>
                         </ul>
                     </li>
 
@@ -241,19 +241,19 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Category</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">No</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">Category</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">Description</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">Action</th>
                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for category in categories %}
                                             <tr>
-                                                <td>{{forloop.counter}}</td>
-                                                <td>{{category.category_name}}</td>
-                                                <td>{{category.category_description}}</td>
+                                                <td style="font-size: 18px; color:black; text-align: center;">{{forloop.counter}}</td>
+                                                <td style="font-size: 18px; color:black; text-align: center;">{{category.category_name}}</td>
+                                                <td style="font-size: 18px; color:black; text-align: center;">{{category.category_description}}</td>
                                                 <td style="text-align: center;">
                                                     <a href="{% url 'edit_category' category.id %}" >
                                                         <i class="fas fa-pen" style="color: rgb(5, 94, 43); margin-right: 20px;"></i>
@@ -269,10 +269,10 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Category</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">No</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">Category</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">Description</th>
+                                                <th style="font-size: 18px; color:black; text-align: center;">Action</th>
                                               
                                             </tr>
                                         </tfoot>
