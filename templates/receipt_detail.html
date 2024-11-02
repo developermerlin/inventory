@@ -20,7 +20,14 @@
     <link href="{% static 'css1/style.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+    <style>
+        /* Hide elements with the class 'no-print' when printing */
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        </style>
 </head>
 
 <body>
@@ -76,7 +83,7 @@
                             <span class="username" style="margin-right: 10px;" >{{user}}</span>
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="{% static 'images/fawaz.jpeg' %}" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -224,12 +231,12 @@
                                             <h5>fawazbuildings@holdings.const</h5>
                                         </div>
                                         <div class="col-md-6">
-                                            <img style="margin-left: 280px;" src="{% static 'images/fawaz.jpeg' %}" alt="">
+                                            <img style="margin-left: 230px;" src="{% static 'images/fawaz.jpeg' %}" alt="">
                                         </div>
                                     </div>
         
                                     <div class="row mt-4">
-                                        <div class="col-md-6" style="margin-left: 500px;">
+                                        <div class="col-md-6" style="margin-left: 400px;">
                                             <h1>RECEIPT</h1>
                                         </div>
                                     </div>
@@ -281,13 +288,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
+        
+                        <div class="container no-print">
                             <div class="row" style="margin-left: 200px;">
                                 <div class="col-md-4">
-                                    <a class="btn btn-success w-100 text-white mb-4 p-3" href="{% url 'final_cart' %}">BACK</a>
+                                    <a class="btn btn-success w-100 text-white mb-4 p-3 no-print" href="{% url 'final_cart' %}">BACK</a>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-info w-100 p-3" onclick="printSection()">Print</button>
+                                    <button class="btn btn-info w-100 p-3 no-print" onclick="printSection()">Print</button>
                                 </div>
                             </div>
                         </div>
@@ -295,6 +303,8 @@
                 </div>
             </div>
         </div>
+        
+       
         
         <script>
         function printSection() {
@@ -306,6 +316,7 @@
             document.body.innerHTML = originalContents;
         }
         </script>
+        
         
     <!--**********************************
         Main wrapper end

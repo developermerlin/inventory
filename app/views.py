@@ -7,8 +7,9 @@ from datetime import datetime
 from decimal import Decimal
 from collections import defaultdict
 import uuid
-from django.db.models import Sum
-
+from django.db.models import Sum # type: ignore
+from django.utils.dateparse import parse_date # type: ignore
+from datetime import datetime, timedelta
 # Create your views here.
 
 def home(request):
@@ -490,3 +491,54 @@ def receipt_detail(request, session_id):
 
 # def receipt_detail(request):
 #     return render(request, 'receipt_detail.html')
+
+
+def report(request):
+
+    return render(request, 'report.html')
+
+
+
+
+def sales_report_by_date(request):
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    if start_date and end_date:
+        # Parse the start and end dates exactly as provided
+        start_date = parse_date(start_date)
+        end_date = parse_date(end_date) + timedelta(days=1)  # Extend end_date by one day
+
+        # Filter FinalCart entries with date_added from start_date up to (but not including) the next day after end_date
+        sales_data = FinalCart.objects.filter(date_added__gte=start_date, date_added__lt=end_date)
+
+        # Calculate the total sales amount
+        total_sales = sales_data.aggregate(Sum('total_price'))['total_price__sum'] or 0
+    else:
+        # No date range provided, set empty data and total sales as 0
+        sales_data = []
+        total_sales = 0
+
+    # Pass data to the template
+    context = {
+        'sales_data': sales_data,
+        'total_sales': total_sales,
+        'start_date': start_date,
+        'end_date': end_date - timedelta(days=1),  # Revert end_date for display in the template
+    }
+    return render(request, 'sales_report_by_date.html', context)
+
+
+def total_sales_report(request):
+    # Query all FinalCart entries to get total sales
+    sales_data = FinalCart.objects.all()
+
+    # Aggregate the total sales based on the total_price field
+    total_sales = sales_data.aggregate(Sum('total_price'))['total_price__sum'] or 0
+
+    # Pass data to the template
+    context = {
+        'sales_data': sales_data,
+        'total_sales': total_sales,
+    }
+    return render(request, 'total_sales_report.html', context)

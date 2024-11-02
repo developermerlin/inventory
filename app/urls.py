@@ -40,6 +40,8 @@ urlpatterns = [
     # path('receipt/<uuid:session_id>/', views.receipt_detail, name='receipt_detail'),  # New URL pattern
     path('receipt_detail/<uuid:session_id>/',views.receipt_detail, name='receipt_detail'),
 
-
+    path('report/', views.report, name='report'),
+    path('sales-report-by-date/', views.sales_report_by_date, name='generate_sales_report_by_date'),
+    path('total-sales-report/', views.total_sales_report, name='generate_total_sales_report'),
 
 ]
