@@ -14,10 +14,11 @@
     <!-- Chartist -->
     <link rel="stylesheet" href="{% static 'plugins1/chartist/css/chartist.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugins1/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
+
+    <link href="{% static 'plugins1/tables/css/datatable/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link href="{% static 'css1/style.css' %}" rel="stylesheet">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 </head>
@@ -46,7 +47,7 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index-2.html">
-                    <b><h4 style="color: white; margin-left: 20px;">Fawaz</h4> </b>
+                    <b><h4 style="color: white; margin-left: 20px;">Fawaz Building </h4> </b>
                  
                 </a>
             </div>
@@ -60,6 +61,7 @@
         ***********************************-->
         <div class="header">    
             <div class="header-content clearfix">
+                
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -79,7 +81,7 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                       
+ 
                                         <hr class="my-2">
                                         
                                         <li><a href="{% url 'user_logout'%}"><i class="icon-key"></i> <span>Logout</span></a></li>
@@ -123,7 +125,7 @@
                             <i class="icon-note menu-icon"></i><span class="nav-text">Products</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{% url 'product' %}">product</a></li>
+                            <li><a href="{% url 'product' %}">Products</a></li>
                         </ul>
                     </li>
                     <li>
@@ -179,16 +181,6 @@
                             <li><a href="{% url 'report' %}">Sales Report</a></li>
                         </ul>
                     </li>
-
-
-                    <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Users</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'register' %}">Add Users</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -218,138 +210,39 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-
-            <div class="container-fluid mt-3">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-1">
+                    <div class="col-12">
+                        <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Total Products</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white ">{{products}}</h2>
-                                    <p class="text-white">{{ today|date:"d F Y" }}</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-2">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Our Customers</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">{{customers}}</h2>
-                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-3">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Products Sold</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">{{sales}}</h2>
-                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-4">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Our Suppliers</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">{{suppliers}}</h2>
-                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body pb-0 d-flex justify-content-between">
-                                        
-                                       
-                                    </div>
+                                <h3>User Registration</h3>
+                                <div class="container" style="margin-top: 40px;">
                                     
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            
-                                            
-                                            <canvas id="myChart" width="300" height="100"></canvas>
-                                        
-                                            <script>
-                                                document.addEventListener('DOMContentLoaded', function () {
-                                                    fetch('/chart-data/')
-                                                        .then(response => response.json())
-                                                        .then(data => {
-                                                            const ctx = document.getElementById('myChart').getContext('2d');
-                                            
-                                                            // Generate random colors for each bar
-                                                            const colors = data.labels.map(() => {
-                                                                const randomColor = () => 'rgba(' + Math.floor(Math.random() * 256) + ', ' +
-                                                                    Math.floor(Math.random() * 256) + ', ' +
-                                                                    Math.floor(Math.random() * 256) + ', 0.6)';
-                                                                return randomColor();
-                                                            });
-                                            
-                                                            new Chart(ctx, {
-                                                                type: data.chart_type,
-                                                                data: {
-                                                                    labels: data.labels,
-                                                                    datasets: [{
-                                                                        label: data.label,
-                                                                        data: data.values,
-                                                                        backgroundColor: colors,  // Set the background color to the generated array
-                                                                        borderColor: 'rgba(0, 0, 0, 1)', // Set border color for all bars
-                                                                        borderWidth: 1
-                                                                    }]
-                                                                },
-                                                                options: {
-                                                                    scales: {
-                                                                        y: {
-                                                                            beginAtZero: true
-                                                                        }
-                                                                    }
-                                                                }
-                                                            });
-                                                        });
-                                                });
-                                            </script>
-                                            
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-3">
+                                            <form action="" method="post">
+                                                {% csrf_token %}
+                                                <input type="text" name="username" class="form-control" placeholder="Username">
+                                                <input type="password" name="password1" class="form-control mt-3" placeholder="Password">
+                                                <input type="password" name="password2" class="form-control mt-3" placeholder="Confirm Password">
+                                                <button class="btn btn-primary w-100 mt-3">Register</button>
+                                            </form>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                
-
-                
-                
-                
-
-               
-
-               
-
-                
-
-              
             </div>
-            <!-- #/ container -->
         </div>
+        
+
+
+
+
+
         <!--**********************************
             Content body end
         ***********************************-->
@@ -374,13 +267,11 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{% static 'plugins1/common/common.min.js' %}"></script>
     <script src="{% static 'js1/custom.min.js' %}"></script>
     <script src="{% static 'js1/settings.js' %}"></script>
     <script src="{% static 'js1/gleek.js' %}"></script>
     <script src="{% static 'js1/styleSwitcher.js' %}"></script>
-
     <!-- Chartjs -->
     <script src="{% static 'plugins1/chart.js/Chart.bundle.min.js' %}"></script>
     <!-- Circle progress -->
@@ -398,13 +289,25 @@
     <!-- ChartistJS -->
     <script src="{% static 'plugins1/chartist/js/chartist.min.js' %}"></script>
     <script src="{% static 'plugins1/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
-
-
-
     <script src="{% static 'js1/dashboard/dashboard-1.js' %}"></script>
 
+    <script src="{% static 'plugins1/tables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'plugins1/tables/js/datatable/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins1/tables/js/datatable-init/datatable-basic.min.js' %}"></script>
+
+    <script>
+        setTimeout(function() {
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.classList.remove('show');
+                alert.classList.add('fade');
+                setTimeout(function() {
+                    alert.remove();
+                }, 150); // Adjust this timing as needed
+            }
+        }, 2000); // Time in milliseconds before the alert disappears (e.g., 3000ms = 3 seconds)
+    </script>
 </body>
 
 
-<!-- Mirrored from demo.themefisher.com/quixlab-bootstrap/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 Aug 2024 11:28:30 GMT -->
 </html>

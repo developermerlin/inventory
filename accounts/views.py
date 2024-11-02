@@ -18,3 +18,15 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('home')  
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+
+        user = User.objects.create_user(username=username, password=password1)
+        user.save()
+        return redirect('register')
+    else:
+        return render(request, 'accounts/register.html')
