@@ -91,7 +91,7 @@
                         </li>
                     </ul>
                 </div>
-                <h1 style="padding-top: 20px; letter-spacing: 30px; font-weight: 800; margin-left: 20px;">Fawaz Building Materials</h1>
+                <h1 style="padding-top: 20px; letter-spacing: 20px; font-weight: 800; margin-left: 20px;">Fawaz Building Materials</h1>
 
             </div>
         </div>
@@ -104,82 +104,45 @@
                 <ul class="metismenu" id="menu" style="font-size: 18px;">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="menu-icon"></i><span class="nav-text">Dashboard</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'dashboard' %}">dashboard</a></li>
-                        </ul>
+                        <li><a href="{% url 'dashboard' %}">dashboard</a></li>
+
                     </li>
                     <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Category</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'category' %}">Product Category</a></li>
-                            
-                        </ul>
+                        <li><a href="{% url 'category' %}">Product Category</a></li>
+
                     </li>
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Products</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'product' %}">Products</a></li>
-                        </ul>
+                        <li><a href="{% url 'product' %}">Products</a></li>
+
                     </li>
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Customer</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'customer' %}">All Customers</a></li>
-                        </ul>
+                        <li><a href="{% url 'customer' %}">All Customers</a></li>
+
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Suppliers</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'supplier' %}">All Suppliers</a></li>
-                        </ul>
+                        <li><a href="{% url 'supplier' %}">All Suppliers</a></li>
+
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Purchase</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
-                        </ul>
+                        <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
+
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Sales</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'add_to_temp_cart' %}">Sales Order</a></li>
-                        </ul>
+                        <li><a href="{% url 'add_to_temp_cart' %}">Sales Order</a></li>
+
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Cart History</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'final_cart' %}">Cart History</a></li>
-                        </ul>
+                        <li><a href="{% url 'final_cart' %}">Cart History</a></li>
+
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="javascript:void(0);" onclick="toggleDropdown(this)" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Report</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{% url 'report' %}">Sales Report</a></li>
-                        </ul>
+                        <li><a href="{% url 'report' %}">Sales Report</a></li>
+
                     </li>
                 </ul>
             </div>
@@ -216,13 +179,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3>Purchase Order</h3>
+                                <h3>Order</h3>
                                 <div class="container">
                                     <div class="row" style="margin-top: 10px;">
                                         <div class="col-md-12" style="margin-left: 950px;">
                                             <a href="" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">
                                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                <span class="ms-1">Add Purchase Order</span> 
+                                                <span class="ms-1">Add Order</span> 
                                             </a>
                                         </div>
                                     </div>
@@ -318,7 +281,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLongTitle">Purchase Order</h3>
+          <h3 class="modal-title" id="exampleModalLongTitle">Order</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
