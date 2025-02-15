@@ -1,8 +1,9 @@
-from django.urls import path
+from django.urls import path # type: ignore
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.user_login, name='user_login'),
+    path('clerk/', views.clerk, name='clerk'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('category/', views.category, name='category'),
     path('edit_category/<int:pk>/', views.edit_category, name='edit_category'),

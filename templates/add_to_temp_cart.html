@@ -14,12 +14,11 @@
     <!-- Chartist -->
     <link rel="stylesheet" href="{% static 'plugins1/chartist/css/chartist.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugins1/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
-
-    <link href="{% static 'plugins1/tables/css/datatable/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link href="{% static 'css1/style.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -46,8 +45,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index-2.html">
-                    <b><h4 style="color: white; margin-left: 20px;">Fawaz Building </h4> </b>
+                <a href="{% url 'dashboard' %}">
+                    <b><h4 style="color: white; font-size: 25px;">Sales Manager</h4> </b>
                  
                 </a>
             </div>
@@ -61,7 +60,6 @@
         ***********************************-->
         <div class="header">    
             <div class="header-content clearfix">
-                
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -81,10 +79,10 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
- 
+                                       
                                         <hr class="my-2">
                                         
-                                        <li><a href="{% url 'user_logout'%}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{% url 'user_login'%}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -102,47 +100,22 @@
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu" style="font-size: 18px;">
-                    <li class="nav-label">Dashboard</li>
-                    <li>
-                        <li><a href="{% url 'dashboard' %}">dashboard</a></li>
-
-                    </li>
-                    <li class="mega-menu mega-menu-sm">
-                        <li><a href="{% url 'category' %}">Product Category</a></li>
-
-                    </li>
-                    <li>
-                        <li><a href="{% url 'product' %}">Products</a></li>
-
-                    </li>
-                    <li>
-                        <li><a href="{% url 'customer' %}">All Customers</a></li>
-
-                    </li>
-
-                    <li>
-                        <li><a href="{% url 'supplier' %}">All Suppliers</a></li>
-
-                    </li>
-
-                    <li>
-                        <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
-
-                    </li>
+                    <li class="nav-label">Sales Manager Dashboard</li>
 
                     <li>
                         <li><a href="{% url 'add_to_temp_cart' %}">Sales Order</a></li>
-
                     </li>
 
                     <li>
-                        <li><a href="{% url 'final_cart' %}">Cart History</a></li>
-
+                        <li><a href="{% url 'final_cart' %}">Sales History</a></li>
                     </li>
 
                     <li>
                         <li><a href="{% url 'report' %}">Sales Report</a></li>
+                    </li>
 
+                    <li>
+                        <li><a href="{% url 'register' %}">Add Users</a></li>
                     </li>
                 </ul>
             </div>

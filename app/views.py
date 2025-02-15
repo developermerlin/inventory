@@ -11,10 +11,44 @@ from django.db.models import Sum # type: ignore
 from django.utils.dateparse import parse_date # type: ignore
 from datetime import datetime, timedelta
 import json
-from django.utils import timezone
+from django.utils import timezone # type: ignore
+from django.contrib.auth import authenticate, login, logout # type: ignore
+from django.contrib.auth.models import User # type: ignore
 
-def home(request):
-    return render(request, 'home.html')
+# def home(request):
+#     return render(request, 'home.html')
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Check if the user is a superuser
+            if user.is_superuser:
+                return redirect('dashboard')  # Redirect to dashboard for superusers
+            else:
+                return redirect('clerk')  # Redirect to clerk page for non-superusers
+        else:
+            messages.error(request, 'Invalid username or password')
+    return render(request, 'accounts/login.html')
+
+def clerk(request):
+    suppliers = Supplier.objects.all().count()
+    products = Product.objects.all().count()
+    customers = Customer.objects.all().count()
+    categories = Category.objects.all().count()
+
+    context={
+        'suppliers':suppliers,
+        'products':products,
+        'customers':customers,
+        'categories':categories
+
+    }
+
+    return render(request, 'clerk.html',context)
 
 def dashboard(request):
     today = timezone.now()

@@ -46,8 +46,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index-2.html">
-                    <b><h4 style="color: white; margin-left: 20px;">Fawaz Building </h4> </b>
+                <a href="{% url 'dashboard' %}">
+                    <b><h4 style="color: white; margin-left: 20px;">Fawaz Building</h4> </b>
                  
                 </a>
             </div>
@@ -103,30 +103,22 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu" style="font-size: 18px;">
                     <li class="nav-label">Dashboard</li>
-                    <li>
-                        <li><a href="{% url 'dashboard' %}">dashboard</a></li>
-
-                    </li>
+                 
                     <li class="mega-menu mega-menu-sm">
                         <li><a href="{% url 'category' %}">Product Category</a></li>
 
                     </li>
-                    <li>
-                        <li><a href="{% url 'product' %}">Products</a></li>
-
-                    </li>
-                    <li>
-                        <li><a href="{% url 'customer' %}">All Customers</a></li>
-
-                    </li>
-
+                    
                     <li>
                         <li><a href="{% url 'supplier' %}">All Suppliers</a></li>
-
                     </li>
 
                     <li>
-                        <li><a href="{% url 'purchase' %}">Purchase Order</a></li>
+                        <li><a href="{% url 'purchase' %}">Order</a></li>
+                    </li>
+
+                    <li>
+                        <li><a href="{% url 'product' %}">New Products</a></li>
 
                     </li>
 
@@ -136,12 +128,16 @@
                     </li>
 
                     <li>
-                        <li><a href="{% url 'final_cart' %}">Cart History</a></li>
+                        <li><a href="{% url 'final_cart' %}">Sales History</a></li>
 
                     </li>
 
                     <li>
                         <li><a href="{% url 'report' %}">Sales Report</a></li>
+
+                    </li>
+                    <li>
+                        <li><a href="{% url 'customer' %}">Customers</a></li>
 
                     </li>
                 </ul>

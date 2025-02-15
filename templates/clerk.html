@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fawaz Building Materials</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images1/favicon.png' %}">
+    <!-- Pignose Calender -->
+    <link href="{% static 'plugins1/pg-calendar/css/pignose.calendar.min.css' %}" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="{% static 'plugins1/chartist/css/chartist.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins1/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'css1/style.css' %}" rel="stylesheet">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+   
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="{% url 'clerk' %}">
+                    <b><h4 style="color: white;font-size: 30px;">Sales Clerk</h4></b>
+                 
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">    
+            <div class="header-content clearfix">
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <ul class="clearfix">
+                        
+                       
+                        <li class="icons dropdown">
+                            <span class="username" style="margin-right: 10px;" >{{user}}</span>
+                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="{% static 'images/fawaz.jpeg' %}" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                       
+                                        <hr class="my-2">
+                                        
+                                        <li><a href="{% url 'user_login'%}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <h1 style="padding-top: 20px; letter-spacing: 20px; font-weight: 800; margin-left: 20px;">Fawaz Building Materials</h1>
+
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <div class="nk-sidebar">           
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu" style="font-size: 18px;">
+                    <li class="nav-label">Sales Clerk Dashboard</li>
+                    <li>
+                        <!-- <li><a href="{% url 'clerk' %}">Dashboard</a></li> -->
+                    </li>
+                    <li class="mega-menu mega-menu-sm">
+                        <li><a href="{% url 'category' %}">Product Category</a></li>
+                    </li>
+                    
+                    <li>
+                        <li><a href="{% url 'supplier' %}">All Suppliers</a></li>
+                    </li>
+
+                    <li>
+                        <li><a href="{% url 'purchase' %}">Order</a></li>
+                    </li>
+
+                    <li>
+                        <li><a href="{% url 'product' %}">New Product</a></li>
+                    </li>
+                    <li>
+                        <li><a href="{% url 'customer' %}">Customers</a></li>
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        
+        <script>
+        function toggleDropdown(element) {
+            const allDropdowns = document.querySelectorAll('.metismenu > li > ul');
+            const isExpanded = element.getAttribute('aria-expanded') === 'true';
+            
+            // Close all dropdowns
+            allDropdowns.forEach(dropdown => {
+                dropdown.style.display = 'none';
+                dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
+            });
+        
+            // Toggle the clicked dropdown
+            if (!isExpanded) {
+                const dropdown = element.nextElementSibling;
+                dropdown.style.display = 'block';
+                element.setAttribute('aria-expanded', 'true');
+            }
+        }
+        </script>
+        
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-1">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Total Products</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white ">{{products}}</h2>
+                                    <p class="text-white">{{ today|date:"d F Y" }}</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-2">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Our Customers</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">{{customers}}</h2>
+                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fas fa-money"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-3">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Product Category</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">{{categories}}</h2>
+                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Our Suppliers</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">{{suppliers}}</h2>
+                                    <p class="text-white mb-0">{{ today|date:"d F Y" }}</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+         
+                
+
+                
+                
+                
+
+               
+
+               
+
+                
+
+              
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by Ibrahim Kalokoh 2024</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'plugins1/common/common.min.js' %}"></script>
+    <script src="{% static 'js1/custom.min.js' %}"></script>
+    <script src="{% static 'js1/settings.js' %}"></script>
+    <script src="{% static 'js1/gleek.js' %}"></script>
+    <script src="{% static 'js1/styleSwitcher.js' %}"></script>
+
+    <!-- Chartjs -->
+    <script src="{% static 'plugins1/chart.js/Chart.bundle.min.js' %}"></script>
+    <!-- Circle progress -->
+    <script src="{% static 'plugins1/circle-progress/circle-progress.min.js' %}"></script>
+    <!-- Datamap -->
+    <script src="{% static 'plugins1/d3v3/index.js' %}"></script>
+    <script src="{% static 'plugins1/topojson/topojson.min.js' %}"></script>
+    <script src="{% static 'plugins1/datamaps/datamaps.world.min.js' %}"></script>
+    <!-- Morrisjs -->
+    <script src="{% static 'plugins1/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'plugins1/morris/morris.min.js' %}"></script>
+    <!-- Pignose Calender -->
+    <script src="{% static 'plugins1/moment/moment.min.js' %}"></script>
+    <script src="{% static 'plugins1/pg-calendar/js/pignose.calendar.min.js' %}"></script>
+    <!-- ChartistJS -->
+    <script src="{% static 'plugins1/chartist/js/chartist.min.js' %}"></script>
+    <script src="{% static 'plugins1/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
+
+
+
+    <script src="{% static 'js1/dashboard/dashboard-1.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from demo.themefisher.com/quixlab-bootstrap/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 Aug 2024 11:28:30 GMT -->
+</html>
